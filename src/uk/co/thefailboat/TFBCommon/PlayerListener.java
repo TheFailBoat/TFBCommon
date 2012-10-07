@@ -1,6 +1,7 @@
 package uk.co.thefailboat.TFBCommon;
 
 import org.bukkit.ChatColor;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -18,7 +19,11 @@ public class PlayerListener implements Listener {
 	
 	@EventHandler
 	public void PlayerJoinEvent(PlayerJoinEvent event){
-		event.getPlayer().sendMessage(ChatColor.AQUA + instance.motd);
+		Player player = event.getPlayer();
+		player.sendMessage(ChatColor.AQUA + instance.motd);
+		if(player.isOp()){
+			if(!instance.AllowRain) player.sendMessage(ChatColor.YELLOW + "Rain has been globally disabled.");
+		}
 	}
 
 }

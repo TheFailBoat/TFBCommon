@@ -1,4 +1,6 @@
-motd: Hello from TFB-Common!
+general:
+  motd: Hello from TFB-Common!
+  allowRain: true
 teleportation:
   homes: {}
   warps: {}
