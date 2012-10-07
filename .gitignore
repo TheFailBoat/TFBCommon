@@ -3,3 +3,4 @@ Thumbs.db
 [Bb]in
 tfbcommon.jar
 bin/
+*.class
