@@ -1,6 +1,6 @@
 name: TFB-Common
 main: uk.co.thefailboat.TFBCommon.Main
-version: 0.1-DEV
+version: 0.2
 author: TFB
 
 commands:
