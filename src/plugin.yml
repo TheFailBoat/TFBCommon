@@ -24,3 +24,11 @@ commands:
          description: Set the location of your Home.
          permission: tfbcommon.home.sethome
          usage: /sethome
+   Tp:
+         description: Teleport to a player.
+         permission: tfbcommon.teleport.tp
+         usage: /tp [target]
+   Tphere:
+         description: Teleport a player to your position.
+         permission: tfbcommon.teleport.tphere
+         usage: /tphere [target]

@@ -31,6 +31,8 @@ public class Main extends JavaPlugin{
 		getCommand("Warp").setExecutor(new Warp(this));
 		getCommand("Setwarp").setExecutor(new Warp(this));
 		getCommand("Listwarps").setExecutor(new Warp(this));
+		getCommand("Tp").setExecutor(new Teleport(this));
+		getCommand("Tphere").setExecutor(new Teleport(this));
 		
 		for(String key : this.getConfig().getConfigurationSection("teleportation.homes").getKeys(false)){
 			Homes.put(key, (SerializableLocation) this.getConfig().get("teleportation.homes."+key));
