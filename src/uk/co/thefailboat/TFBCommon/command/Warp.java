@@ -1,6 +1,7 @@
 package uk.co.thefailboat.TFBCommon.command;
 
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -29,8 +30,13 @@ public class Warp implements CommandExecutor{
 			}
 			String warp = args[0].toLowerCase();
 			if(instance.Warps.containsKey(warp)){
-				player.teleport(instance.Warps.get(warp).getLocation());
-				player.sendMessage(ChatColor.AQUA + "Warped to " + warp);
+				Location loc = instance.Warps.get(warp).getLocation();
+				if(loc.getChunk().load()){
+					player.teleport(loc);
+					player.sendMessage(ChatColor.AQUA + "Warped to " + warp);
+				}else{
+					player.sendMessage(ChatColor.RED + "Could not load the chunk!");
+				}
 				return true;
 			}else{
 				player.sendMessage(ChatColor.RED + "That warp does not exist!");

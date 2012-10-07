@@ -1,6 +1,7 @@
 package uk.co.thefailboat.TFBCommon.command;
 
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -24,7 +25,13 @@ public class Home implements CommandExecutor{
 		if(cmd.getName().toLowerCase().equals("home")){
 			
 			if(instance.Homes.containsKey(playerLowerName)){
-				player.teleport(instance.Homes.get(playerLowerName).getLocation());
+				Location loc = instance.Homes.get(playerLowerName).getLocation();
+				if(loc.getChunk().load()){
+					player.teleport(loc);
+					player.sendMessage(ChatColor.AQUA + "Welcome Home!");
+				}else{
+					player.sendMessage(ChatColor.RED + "Could not load the chunk!");
+				}
 				
 				player.sendMessage(ChatColor.AQUA + "Welcome Home!");
 				return true;
