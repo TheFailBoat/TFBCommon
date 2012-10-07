@@ -32,8 +32,6 @@ public class Home implements CommandExecutor{
 				}else{
 					player.sendMessage(ChatColor.RED + "Could not load the chunk!");
 				}
-				
-				player.sendMessage(ChatColor.AQUA + "Welcome Home!");
 				return true;
 			}
 			else{

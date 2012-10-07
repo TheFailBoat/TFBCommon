@@ -32,11 +32,17 @@ public class Main extends JavaPlugin{
 		//Register command executors
 		getCommand("Home").setExecutor(new Home(this));
 		getCommand("Sethome").setExecutor(new Home(this));
+		
 		getCommand("Warp").setExecutor(new Warp(this));
 		getCommand("Setwarp").setExecutor(new Warp(this));
 		getCommand("Listwarps").setExecutor(new Warp(this));
+		
 		getCommand("Tp").setExecutor(new Teleport(this));
 		getCommand("Tphere").setExecutor(new Teleport(this));
+		
+		getCommand("Toggleproperty").setExecutor(new General(this));
+		getCommand("Motd").setExecutor(new General(this));
+		getCommand("Setmotd").setExecutor(new General(this));
 		
 		this.LoadConfiguration();
 		

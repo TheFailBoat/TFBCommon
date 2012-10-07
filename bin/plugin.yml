@@ -32,3 +32,15 @@ commands:
          description: Teleport a player to your position.
          permission: tfbcommon.teleport.tphere
          usage: /tphere [target]
+   Motd:
+         description: View the Message Of The Day
+         permission: tfbcommon.general.motd
+         usage: /motd
+   Setmotd:
+         description: Set the Message Of The Day
+         permission: tfbcommon.general.setmotd
+         usage: /setmotd [Message]
+   Toggleproperty:
+         description: Toggle a configuration property
+         permission: tfbcommon.general.toggleproperty
+         usage: /toggleproperty [Property]
