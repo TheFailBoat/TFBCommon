@@ -48,11 +48,10 @@ public class General implements CommandExecutor{
 				if(instance.AllowRain){
 					instance.AllowRain = false;
 					player.sendMessage(ChatColor.AQUA + "Rain is now globally disallowed.");
-					instance.SaveConfiguration();
-					return true;
+				}else{
+					instance.AllowRain = true;
+					player.sendMessage(ChatColor.AQUA + "Rain is now globally allowed.");
 				}
-				instance.AllowRain = true;
-				player.sendMessage(ChatColor.AQUA + "Rain is now globally allowed.");
 				instance.SaveConfiguration();
 				return true;
 			}
