@@ -18,7 +18,7 @@ The plugin itself is nothing special, but you are welcome to fork it and mess ar
 
 ### Homes ###
 - __/home__ - Teleport to  your home.
-- __/sethome__ - CSet your current location as your home.
+- __/sethome__ - Set your current location as your home.
 
 ### Misc ###
 - __/motd__ - View the Message of the Day
