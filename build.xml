@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="tfbcommon" default="all"> 
+  <property file="tfbcommon.properties"/>
+  <!-- Uncomment the following property if no tests compilation is needed -->
+  
+  <!-- Compiler options -->
+  
+  <property name="compiler.debug" value="on"/>
+  <property name="compiler.generate.no.warnings" value="off"/>
+  <property name="compiler.args" value=""/>
+  <property name="compiler.max.memory" value="128m"/>
+  <patternset id="ignored.files">
+    <exclude name="**/CVS/**"/>
+    <exclude name="**/SCCS/**"/>
+    <exclude name="**/RCS/**"/>
+    <exclude name="**/rcs/**"/>
+    <exclude name="**/.DS_Store/**"/>
+    <exclude name="**/.svn/**"/>
+    <exclude name="**/.pyc/**"/>
+    <exclude name="**/.pyo/**"/>
+    <exclude name="**/*.pyc/**"/>
+    <exclude name="**/*.pyo/**"/>
+    <exclude name="**/.git/**"/>
+    <exclude name="**/*.hprof/**"/>
+    <exclude name="**/_svn/**"/>
+    <exclude name="**/.hg/**"/>
+    <exclude name="**/*.lib/**"/>
+    <exclude name="**/*~/**"/>
+  </patternset>
+  <patternset id="library.patterns">
+    <include name="*.zip"/>
+    <include name="*.war"/>
+    <include name="*.egg"/>
+    <include name="*.ear"/>
+    <include name="*.swc"/>
+    <include name="*.jar"/>
+  </patternset>
+  <patternset id="compiler.resources">
+    <include name="**/?*.properties"/>
+    <include name="**/?*.yml"/>
+    <include name="**/?*.xml"/>
+    <include name="**/?*.gif"/>
+    <include name="**/?*.png"/>
+    <include name="**/?*.jpeg"/>
+    <include name="**/?*.jpg"/>
+    <include name="**/?*.html"/>
+    <include name="**/?*.dtd"/>
+    <include name="**/?*.tld"/>
+    <include name="**/?*.ftl"/>
+  </patternset>
+  
+  
+  <!-- Project Libraries -->
+  
+  <!-- Modules -->
+  
+  
+  <!-- Module tfbcommon -->
+  
+  <dirname property="module.tfbcommon.basedir" file="${ant.file}"/>   
+  
+  <property name="compiler.args.tfbcommon" value="${compiler.args}"/>
+  
+  <property name="tfbcommon.output.dir" value="${module.tfbcommon.basedir}/bin"/>
+  
+  <path id="tfbcommon.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="tfbcommon.module.production.classpath">
+      <fileset dir="${module.tfbcommon.basedir}/lib" includes="**/*.jar"/>
+  </path>
+  
+  <path id="tfbcommon.runtime.production.module.classpath">
+    <pathelement location="${tfbcommon.output.dir}"/>
+  </path>
+  
+  <path id="tfbcommon.module.classpath">
+    <pathelement location="${tfbcommon.output.dir}"/>
+  </path>
+  
+  <path id="tfbcommon.runtime.module.classpath">
+    <pathelement location="${tfbcommon.testoutput.dir}"/>
+    <pathelement location="${tfbcommon.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.tfbcommon">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.tfbcommon">
+    <patternset refid="excluded.from.module.tfbcommon"/>
+  </patternset>
+  
+  <path id="tfbcommon.module.sourcepath">
+    <dirset dir="${module.tfbcommon.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+   
+  <target name="compile.module.tfbcommon" description="Compile module tfbcommon; production classes">
+    <mkdir dir="${tfbcommon.output.dir}"/>
+    <javac destdir="${tfbcommon.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" includeantruntime="false">
+      <compilerarg line="${compiler.args.tfbcommon}"/>
+      <bootclasspath refid="tfbcommon.module.bootclasspath"/>
+      <classpath refid="tfbcommon.module.production.classpath"/>
+      <src refid="tfbcommon.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.tfbcommon"/>
+    </javac>
+    
+    <copy todir="${tfbcommon.output.dir}">
+      <fileset dir="${module.tfbcommon.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+	
+	<jar jarfile="tfbcommon.jar" basedir="${tfbcommon.output.dir}">
+		<manifest>
+ 	 		<attribute name="Built-By" value="${user.name}" />
+		</manifest>
+	</jar>
+  </target>
+    
+  <target name="clean.module.tfbcommon" description="cleanup module">
+    <delete dir="${tfbcommon.output.dir}"/>
+    <delete dir="${tfbcommon.testoutput.dir}"/>
+  </target>
+  
+  <target name="init" description="Build initialization">
+    <!-- Perform any build initialization in this target -->
+  </target>
+  
+  <target name="clean" depends="clean.module.tfbcommon" description="cleanup all"/>
+  
+  <target name="build.modules" depends="init, clean, compile.module.tfbcommon" description="build all modules"/>
+  
+  <target name="all" depends="build.modules" description="build all"/>
+</project>

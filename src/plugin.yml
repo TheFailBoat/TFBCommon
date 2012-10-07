@@ -1,0 +1,26 @@
+name: TFB-Common
+main: uk.co.thefailboat.TFBCommon.Main
+version: 0.1-DEV
+author: TFB
+
+commands:
+   Warp:
+         description: Warp to a predefined location.
+         permission: tfbcommon.warp.warp
+         usage: /warp [warp name]
+   Setwarp:
+         description: Set a warp at your current location.
+         permission: tfbcommon.warp.setwarp
+         usage: /setwarp [warp name]
+   Listwarps:
+         description: Show a list of all warps
+         permission: tfbcommon.warp.listwarps
+         usage: /listwarps
+   Home:
+         description: Teleport to your Home.
+         permission: tfbcommon.home.home
+         usage: /home
+   Sethome:
+         description: Set the location of your Home.
+         permission: tfbcommon.home.sethome
+         usage: /sethome
