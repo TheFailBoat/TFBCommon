@@ -9,7 +9,7 @@ public class Statics {
 	/**
 	 * The Version should be prefixed with -DEV if it is not fully tested for release.
 	 */
-	public static String Version = "0.1-DEV";
+	public static String Version = "0.2";
 	/**
 	 * The logging prefix for every message. Should be left as the plugin name.
 	 */
