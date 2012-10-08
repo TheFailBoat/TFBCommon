@@ -1,5 +1,8 @@
 package uk.co.thefailboat.TFBCommon.command;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
@@ -64,7 +67,9 @@ public class Warp implements CommandExecutor{
 		
 		else if(cmd.getName().toLowerCase().equals("listwarps")){
 			String message = ChatColor.AQUA + "Available Warps: ";
-			for(String warp : instance.Warps.keySet()){
+			ArrayList<String> warpNames = new ArrayList<String>(instance.Warps.keySet());
+			Collections.sort(warpNames);
+			for(String warp : warpNames){
 				message += warp + ", ";
 			}
 			message = message.substring(0, message.length()-2); //remove the trailing ", "
@@ -72,6 +77,7 @@ public class Warp implements CommandExecutor{
 			sender.sendMessage(message);
 			return true;
 		}
+		
 		return false;
 	}
 
