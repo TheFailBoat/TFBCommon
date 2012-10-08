@@ -56,6 +56,18 @@ public class General implements CommandExecutor{
 				return true;
 			}
 			
+			else if(args[0].toLowerCase().equals("allowfun")){
+				if(instance.AllowFun){
+					instance.AllowFun = false;
+					player.sendMessage(ChatColor.AQUA + "Fun commands are now disallowed.");
+				}else{
+					instance.AllowFun = true;
+					player.sendMessage(ChatColor.AQUA + "Fun commands are now allowed.");
+				}
+				instance.SaveConfiguration();
+				return true;
+			}
+			
 			else{
 				player.sendMessage(ChatColor.RED + "That property does not exist.");
 			}

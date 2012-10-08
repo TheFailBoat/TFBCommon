@@ -44,3 +44,11 @@ commands:
          description: Toggle a configuration property
          permission: tfbcommon.general.toggleproperty
          usage: /toggleproperty [Property]
+   Ignite:
+         description: Set a player on fire.
+         permission: tfbcommon.fun.ignite
+         usage: /ignite [target]
+   Incinerate:
+         description: Incinerate a player.
+         permission: tfbcommon.fun.incinerate
+         usage: /incinerate [target]

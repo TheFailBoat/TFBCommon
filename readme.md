@@ -24,3 +24,7 @@ The plugin itself is nothing special, but you are welcome to fork it and mess ar
 - __/motd__ - View the Message of the Day
 - __/setmotd *[message]*__ - Set the Message of the Day
 - __/toggleproperty *[property]*__ - Toggle a configuration property
+
+### Fun ###
+- __/ignite *[target]*__ - Set a player on fire
+- __/incinerate *[target]*__ - Incinerate a player

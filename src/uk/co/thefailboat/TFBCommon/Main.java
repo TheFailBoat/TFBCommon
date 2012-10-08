@@ -21,6 +21,7 @@ public class Main extends JavaPlugin{
     public String motd;
     
     public boolean AllowRain;
+    public boolean AllowFun;
 
 	public void onEnable(){
 		ConfigurationSerialization.registerClass(uk.co.thefailboat.TFBCommon.Objects.SerializableLocation.class);
@@ -44,12 +45,17 @@ public class Main extends JavaPlugin{
 		getCommand("Motd").setExecutor(new General(this));
 		getCommand("Setmotd").setExecutor(new General(this));
 		
+		getCommand("Ignite").setExecutor(new Fun(this));
+		getCommand("Incinerate").setExecutor(new Fun(this));
 		this.LoadConfiguration();
 		
 		Statics.log.info(Statics.prefix+"Loaded " + Warps.size() + " Warps from config.");
 		Statics.log.info(Statics.prefix+"Loaded " + Homes.size() + " Player Homes from config.");
 		if(!AllowRain){
 			Statics.log.info(Statics.prefix+"Rain has been globally disabled by the configuration file.");
+		}
+		if(!AllowFun){
+			Statics.log.info(Statics.prefix+"Fun is disallowed.");
 		}
 	}
 	
@@ -58,6 +64,7 @@ public class Main extends JavaPlugin{
 		this.getConfig().set("teleportation.warps", this.Warps);
 		this.getConfig().set("general.motd", this.motd);
 		this.getConfig().set("general.allowRain", this.AllowRain);
+		this.getConfig().set("general.allowFun", this.AllowFun);
 		this.saveConfig();
 	}
 	
@@ -71,6 +78,7 @@ public class Main extends JavaPlugin{
 		
 		motd = this.getConfig().getString("general.motd");
 		AllowRain = this.getConfig().getBoolean("general.allowRain");
+		AllowFun = this.getConfig().getBoolean("general.allowFun");
 	}
 	
 	public void onDisable(){
