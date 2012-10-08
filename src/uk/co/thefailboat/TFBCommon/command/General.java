@@ -72,7 +72,7 @@ public class General implements CommandExecutor{
 				player.sendMessage(ChatColor.RED + "That property does not exist.");
 			}
 			
-			player.sendMessage(ChatColor.GRAY + "Available Properties: AllowRain");			
+			player.sendMessage(ChatColor.GRAY + "Available Properties: AllowRain, AllowFun");			
 			return true;
 		}
 		return false;
