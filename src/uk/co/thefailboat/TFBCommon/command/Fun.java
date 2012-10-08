@@ -21,6 +21,12 @@ public class Fun implements CommandExecutor{
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		if(!(sender instanceof Player)) return false;
 		Player player = (Player)sender;
+		
+		if(!instance.AllowFun){
+			player.sendMessage(ChatColor.RED + "Fun commands are disallowed.");
+			return true;
+		}
+		
 		if(cmd.getName().toLowerCase().equals("ignite")){
 			if(args.length == 0){
 				player.sendMessage(ChatColor.RED + "You must provide a target!");
@@ -34,7 +40,7 @@ public class Fun implements CommandExecutor{
 			}
 			Player target = targetList.get(0);
 			
-			target.setFireTicks(target.getMaxFireTicks());
+			target.setFireTicks(1000000);
 			
 			instance.getServer().broadcastMessage(ChatColor.GOLD + player.getDisplayName() + " ignited " + target.getDisplayName() + "!");
 			return true;
@@ -52,6 +58,10 @@ public class Fun implements CommandExecutor{
 				return true;
 			}
 			Player target = targetList.get(0);
+			
+			if(target.isDead()){
+				player.sendMessage(ChatColor.RED + target.getDisplayName() + " Is already dead!");
+			}
 			
 			World targetWorld = target.getWorld();
 			
