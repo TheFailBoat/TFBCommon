@@ -47,6 +47,7 @@ public class Main extends JavaPlugin{
 		
 		getCommand("Ignite").setExecutor(new Fun(this));
 		getCommand("Incinerate").setExecutor(new Fun(this));
+		
 		this.LoadConfiguration();
 		
 		Statics.log.info(Statics.prefix+"Loaded " + Warps.size() + " Warps from config.");
